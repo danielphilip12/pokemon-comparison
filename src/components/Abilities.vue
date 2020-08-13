@@ -19,7 +19,7 @@
                 </tr>
             </tbody>
         </table>
-        <p v-if="effect_entry">{{ effect_entry }}</p>
+        <p>{{ effect_entry }}</p>
     </div>
     
 </template>
@@ -40,7 +40,8 @@ export default {
             for(let i = 0; i < entries.length; i++) {
                 let x = entries[i].language                
                 if (x.name === "en") {
-                    this.effect_entry = entries[i]["effect"];
+                    console.log(entries[i])
+                    this.effect_entry = entries[i]["short_effect"];
                 }
             }
         },
