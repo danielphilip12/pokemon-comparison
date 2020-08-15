@@ -8,18 +8,19 @@
                 <tr>
                     <th>Name</th>
                     <th>Hidden</th>
-                    <th>More Info</th>
+                    <th>Button</th>
+                    <th>Effect</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(ability, index) in abilities" :key="index">
                     <td>{{ ability.ability.name }}</td>
                     <td>{{ ability.is_hidden }}</td>
-                    <td><button @click="getAbilityInfo(ability.ability.name)" class="btn btn-info">More info</button></td>
+                    <td><button @click="getAbilityInfoAsync(ability.ability.name)" class="btn btn-info">More info</button></td>
+                    <td v-if="effects.length > index">{{ effects[index] }}</td>
                 </tr>
             </tbody>
         </table>
-        <p>{{ effect_entry }}</p>
     </div>
     
 </template>
@@ -27,31 +28,45 @@
 <script>
 export default {
     name: "Abilities",
-    props: ["abilities", "pokedex"],
+    props: ["abilities", "pokedex", "effects"],
     data() {
         return {
-            ability_info: '',
-            effect_entry: ''
+            val: '',
+            ans: ''
         }
     },
     methods: {
         getEffectEntry() {
-            let entries = this.ability_info.effect_entries
+            let entries = this.val.effect_entries;
+            let answer = "";
             for(let i = 0; i < entries.length; i++) {
                 let x = entries[i].language                
                 if (x.name === "en") {
-                    console.log(entries[i])
-                    this.effect_entry = entries[i]["short_effect"];
+                    // console.log(entries[i])
+                    answer = entries[i]["short_effect"];
+                    if (!this.effects.includes(answer)){
+                        this.effects.push(answer);
+                    }
+                    
                 }
             }
-        },
-        getAbilityInfo(ability) {
-            this.pokedex.getAbilityByName(ability).then(response => {
-                console.log(response)
-                this.ability_info=response
-            }).then(() => {this.getEffectEntry();})
             
-        }
+        },
+        getAbilityInfoAsync(ability) {
+            this.pokedex.getAbilityByName(ability).then(response => {
+                this.val=response;
+            }).then(() => this.getEffectEntry());
+            
+        },
+        // getAbilityInfo(ability) {
+            
+        //     this.getAbilityInfoAsync(ability).then(response => {
+        //         let y = response;
+        //         console.log(y);
+        //         return y
+        //     })
+            
+        // }
         
     }
 }

@@ -7,7 +7,7 @@
     <div v-if="valid_pokemon">
       <img :src="pokemon.sprites.front_default" alt=""><br>
       <Basics :pokemon="pokemon" />
-      <Abilities :abilities="pokemon.abilities" :pokedex="Pokedex" />
+      <Abilities :abilities="pokemon.abilities" :pokedex="Pokedex" :effects="effects" />
     </div>
     
     
@@ -31,7 +31,8 @@ export default {
       pokemonName: '',
       pokemon: '',
       valid_pokemon: false,
-      Pokedex: P
+      Pokedex: P,
+      effects: []
     }
   },
   methods: {
@@ -39,6 +40,7 @@ export default {
       P.getPokemonByName(this.pokemonName).then(response => {
         this.pokemon = response,
         this.valid_pokemon = true;
+        this.effects = [];
       }).catch(() => {
         this.valid_pokemon = false;
       });
