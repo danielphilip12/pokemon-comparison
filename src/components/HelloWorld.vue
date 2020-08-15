@@ -1,14 +1,18 @@
 <template>
-  <div class="container">
+  <div>
+    <div class="form-inline justify-content-center">
+      <input class="form-control" type="text" v-model="pokemonName">
+      <button class="btn btn-success" @click="onClick">Search Pokemon</button>
+    </div>
     
-    <input type="text" v-model="pokemonName">
-    <button @click="onClick">Click Me</button><br>
     
     <div v-if="valid_pokemon">
       <img :src="pokemon.sprites.front_default" alt=""><br>
       <Basics :pokemon="pokemon" />
+      <Stats :stats="pokemon.stats" />
       <Abilities :abilities="pokemon.abilities" :pokedex="Pokedex" :effects="effects" />
     </div>
+    <h3 v-else>Please enter a valid pokemon</h3>
     
     
     
@@ -20,11 +24,13 @@ const Pokedex = require('pokeapi-js-wrapper')
 const P = new Pokedex.Pokedex();
 import Basics from './Basics'
 import Abilities from './Abilities'
+import Stats from './Stats'
 export default {
   name: 'HelloWorld',
   components: {
     Basics,
-    Abilities
+    Abilities,
+    Stats
   },
   data() {
     return {

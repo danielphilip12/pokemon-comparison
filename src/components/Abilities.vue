@@ -16,7 +16,7 @@
                 <tr v-for="(ability, index) in abilities" :key="index">
                     <td>{{ ability.ability.name }}</td>
                     <td>{{ ability.is_hidden }}</td>
-                    <td><button @click="getAbilityInfoAsync(ability.ability.name)" class="btn btn-info">More info</button></td>
+                    <td><button @click="getAbilityInfoAsync(ability.ability.name)" class="btn btn-info">See effect</button></td>
                     <td v-if="effects.length > index">{{ effects[index] }}</td>
                 </tr>
             </tbody>
@@ -57,16 +57,7 @@ export default {
                 this.val=response;
             }).then(() => this.getEffectEntry());
             
-        },
-        // getAbilityInfo(ability) {
-            
-        //     this.getAbilityInfoAsync(ability).then(response => {
-        //         let y = response;
-        //         console.log(y);
-        //         return y
-        //     })
-            
-        // }
+        }
         
     }
 }

@@ -6,6 +6,7 @@
         <div class="col-6">
           <HelloWorld />
         </div>
+        <div class="vertical"></div>
         <div class="col-6">
           <HelloWorld />
         </div>
@@ -35,4 +36,10 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.vertical { 
+            border-left: 1px solid rgb(187, 185, 185); 
+            height: 100vh; 
+            position:absolute; 
+            left: 50%; 
+        } 
 </style>

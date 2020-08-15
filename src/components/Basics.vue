@@ -1,11 +1,11 @@
 <template>
   <div>
       <h3>Name: {{ pokemon.name }}</h3>
-      <ul>
-          <li>ID: {{ pokemon.id }}</li>
-          <li>Height: {{ pokemon.height }}</li>
-          <li>Weight: {{ pokemon.weight }}</li>
-          <li>Base Experience: {{ pokemon.base_experience }}</li>
+      <ul class="list-group">
+          <li class="list-group-item">ID: {{ pokemon.id }}</li>
+          <li class="list-group-item">Height: {{ pokemon.height }}</li>
+          <li class="list-group-item">Weight: {{ pokemon.weight }}</li>
+          <li class="list-group-item">Base Experience: {{ pokemon.base_experience }}</li>
       </ul>
   </div>
 </template>
