@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="form-inline justify-content-center">
+    <form class="form-inline justify-content-center">
       <input class="form-control" type="text" v-model="pokemonName">
       <button class="btn btn-success" @click="onClick">Search Pokemon</button>
-    </div>
+    </form>
     
     
     <div v-if="valid_pokemon">
@@ -42,7 +42,8 @@ export default {
     }
   },
   methods: {
-    onClick() {
+    onClick(e) {
+      e.preventDefault();
       P.getPokemonByName(this.pokemonName).then(response => {
         this.pokemon = response,
         this.valid_pokemon = true;
@@ -71,5 +72,9 @@ li {
 }
 a {
   color: #42b983;
+}
+img {
+  height: 100px;
+  width: 100px;
 }
 </style>
