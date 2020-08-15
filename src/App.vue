@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <h1>Pokemon Comparer</h1>
+    <div class="jumbotron">
+      <h1>Pokemon Comparer</h1>
+    </div>
+    
     <div class="container">
       <div class="row">
         <div class="col-6">
@@ -37,9 +40,9 @@ export default {
   margin-top: 60px;
 }
 .vertical { 
-            border-left: 1px solid rgb(187, 185, 185); 
-            height: 100vh; 
-            position:absolute; 
-            left: 50%; 
-        } 
+    border-left: 1px solid rgb(187, 185, 185); 
+    height: 100%; 
+    position: absolute; 
+    left: 50%; 
+} 
 </style>

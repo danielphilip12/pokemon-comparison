@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <form class="form-inline justify-content-center">
       <input class="form-control" type="text" v-model="pokemonName">
       <button class="btn btn-success" @click="onClick">Search Pokemon</button>
@@ -7,10 +7,12 @@
     
     
     <div v-if="valid_pokemon">
+      
       <img :src="pokemon.sprites.front_default" alt=""><br>
       <Basics :pokemon="pokemon" />
       <Stats :stats="pokemon.stats" />
       <Abilities :abilities="pokemon.abilities" :pokedex="Pokedex" :effects="effects" />
+      <Types :types="pokemon.types" />
     </div>
     <h3 v-else>Please enter a valid pokemon</h3>
     
@@ -25,12 +27,14 @@ const P = new Pokedex.Pokedex();
 import Basics from './Basics'
 import Abilities from './Abilities'
 import Stats from './Stats'
+import Types from './Types'
 export default {
   name: 'HelloWorld',
   components: {
     Basics,
     Abilities,
-    Stats
+    Stats,
+    Types
   },
   data() {
     return {
