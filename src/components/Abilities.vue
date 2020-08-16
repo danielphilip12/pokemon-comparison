@@ -8,19 +8,22 @@
                 <tr>
                     <th>Name</th>
                     <th>Hidden</th>
-                    <th>Button</th>
-                    <th>Effect</th>
+                    <!-- <th>Button</th>
+                    <th>Effect</th> -->
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(ability, index) in abilities" :key="index">
                     <td>{{ ability.ability.name }}</td>
                     <td>{{ ability.is_hidden }}</td>
-                    <td><button @click="getAbilityInfoAsync(ability.ability.name)" class="btn btn-info">See effect</button></td>
-                    <td v-if="effects.length > index">{{ effects[index] }}</td>
+                    <!-- <td><button @click="getAbilityInfoAsync(ability.ability.name)" class="btn btn-info">See effect</button></td>
+                    <td v-if="effects.length > index">{{ effects[index] }}</td> -->
+                    {{ getAbilityInfo(ability.ability.name) }}
+                    <p>Effect {{ ability_effect }}</p>
                 </tr>
             </tbody>
         </table>
+        
     </div>
     
 </template>
@@ -29,6 +32,11 @@
 export default {
     name: "Abilities",
     props: ["abilities", "pokedex", "effects"],
+    data() {
+        return {
+            ability_effect: ''
+        }
+    },
     methods: {
         getEffectEntry(response) {
             let entries = response.effect_entries;
@@ -40,7 +48,7 @@ export default {
                     answer = entries[i]["short_effect"];
                     if (!this.effects.includes(answer)){
                         this.effects.push(answer);
-                        console.log(this.effects);
+                        return answer
                     }
                     
                 }
@@ -48,11 +56,23 @@ export default {
             
         },
         getAbilityInfoAsync(ability) {
-            this.pokedex.getAbilityByName(ability).then(response => {
-                this.getEffectEntry(response);
-            })
+            return this.pokedex.getAbilityByName(ability)
             
+        },
+
+        getAbilityInfo(ability) {
+            return this.getAbilityInfoAsync(ability).then(response => {
+                console.log(response);
+                return this.getEffectEntry(response)
+            }).then(data => {
+                console.log(data);
+                if(data !== undefined) {
+                    this.ability_effect = data;
+                }
+            })
         }
+
+        
         
     }
 }
