@@ -48,7 +48,7 @@ export default {
   methods: {
     onClick(e) {
       e.preventDefault();
-      P.getPokemonByName(this.pokemonName).then(response => {
+      P.getPokemonByName(this.pokemonName.toLowerCase()).then(response => {
         this.pokemon = response,
         this.valid_pokemon = true;
         this.effects = [];
