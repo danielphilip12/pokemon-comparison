@@ -29,15 +29,9 @@
 export default {
     name: "Abilities",
     props: ["abilities", "pokedex", "effects"],
-    data() {
-        return {
-            val: '',
-            ans: ''
-        }
-    },
     methods: {
-        getEffectEntry() {
-            let entries = this.val.effect_entries;
+        getEffectEntry(response) {
+            let entries = response.effect_entries;
             let answer = "";
             for(let i = 0; i < entries.length; i++) {
                 let x = entries[i].language                
@@ -46,6 +40,7 @@ export default {
                     answer = entries[i]["short_effect"];
                     if (!this.effects.includes(answer)){
                         this.effects.push(answer);
+                        console.log(this.effects);
                     }
                     
                 }
@@ -54,8 +49,8 @@ export default {
         },
         getAbilityInfoAsync(ability) {
             this.pokedex.getAbilityByName(ability).then(response => {
-                this.val=response;
-            }).then(() => this.getEffectEntry());
+                this.getEffectEntry(response);
+            })
             
         }
         
