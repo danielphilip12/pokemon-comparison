@@ -13,6 +13,7 @@
       <Stats :stats="pokemon.stats" />
       <Abilities :abilities="pokemon.abilities" :pokedex="Pokedex" :effects="effects" />
       <Types :types="pokemon.types" />
+      <Moves :moves="pokemon.moves" :pokedex="Pokedex" />
     </div>
     <h3 v-else>Please enter a valid pokemon</h3>
     
@@ -28,13 +29,15 @@ import Basics from './Basics'
 import Abilities from './Abilities'
 import Stats from './Stats'
 import Types from './Types'
+import Moves from './Moves'
 export default {
   name: 'HelloWorld',
   components: {
     Basics,
     Abilities,
     Stats,
-    Types
+    Types,
+    Moves
   },
   data() {
     return {
