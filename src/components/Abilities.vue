@@ -16,7 +16,7 @@
                 <tr v-for="(ability, index) in abilities" :key="index">
                     <td>{{ ability.ability.name }}</td>
                     <td>{{ ability.is_hidden }}</td>
-                    <Ability :ability="ability.ability.name" :pokedex="pokedex" />
+                    <Ability :ability="ability.ability.name" :pokedex="pokedex" :key="ability.ability.name" />
                     <!-- <td><button @click="getAbilityInfoAsync(ability.ability.name)" class="btn btn-info">See effect</button></td>
                     <td v-if="effects.length > index">{{ effects[index] }}</td> -->
                     
