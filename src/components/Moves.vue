@@ -9,10 +9,16 @@
           </tr>
       </thead>
       <tbody>
-          <tr v-for="(move, index) in moves" :key="index">
+          <!-- <tr v-for="(move, index) in moves" :key="index">
               <td>{{ move.move.name }}</td>
               <Move :move="move.move.name" :pokedex="pokedex" />
-          </tr>
+          </tr> -->
+          <Move 
+            v-for="move in moves"
+            :key="move.move.name"
+            :move="move.move.name"
+            :pokedex="pokedex"
+            />
       </tbody>
   </table>
 </template>
