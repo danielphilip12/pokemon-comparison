@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <form class="form-inline justify-content-center">
-      <input class="form-control" type="text" v-model="pokemonName">
+      <input class="form-control" type="text" v-model="pokemonName" list="pokelist">
+      <datalist id="pokelist">
+        <option v-for="name in pokemonList" :key="name" :value="name">{{ name }}</option>
+      </datalist>
       <button class="btn btn-success" @click="onClick">Search Pokemon</button>
     </form>
     
@@ -30,6 +33,7 @@ import Abilities from './Abilities'
 import Stats from './Stats'
 import Types from './Types'
 import Moves from './Moves'
+import { pokelist } from '../pokemonList'
 export default {
   name: 'HelloWorld',
   components: {
@@ -45,7 +49,8 @@ export default {
       pokemon: '',
       valid_pokemon: false,
       Pokedex: P,
-      effects: []
+      effects: [],
+      pokemonList: pokelist
     }
   },
   methods: {
@@ -58,7 +63,7 @@ export default {
       }).catch(() => {
         this.valid_pokemon = false;
       });
-      
+
     }
   }
 }
