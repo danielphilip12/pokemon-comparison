@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <form class="form-inline justify-content-center">
+    <!-- <form class="form-inline justify-content-center">
       <input class="form-control" type="text" v-model="pokemonName" list="pokelist">
       <datalist id="pokelist">
         <option v-for="name in pokemonList" :key="name" :value="name">{{ name }}</option>
       </datalist>
       <button class="btn btn-success" @click="onClick">Search Pokemon</button>
-    </form>
-    
+    </form> -->
+    <Search @search-pokemon="SearchPokemon" />
     
     <div v-if="valid_pokemon">
       
@@ -33,7 +33,7 @@ import Abilities from './Abilities'
 import Stats from './Stats'
 import Types from './Types'
 import Moves from './Moves'
-import { pokelist } from '../pokemonList'
+import Search from './Search'
 export default {
   name: 'HelloWorld',
   components: {
@@ -41,7 +41,8 @@ export default {
     Abilities,
     Stats,
     Types,
-    Moves
+    Moves,
+    Search
   },
   data() {
     return {
@@ -49,21 +50,29 @@ export default {
       pokemon: '',
       valid_pokemon: false,
       Pokedex: P,
-      effects: [],
-      pokemonList: pokelist
+      effects: []
     }
   },
   methods: {
-    onClick(e) {
-      e.preventDefault();
-      P.getPokemonByName(this.pokemonName.toLowerCase()).then(response => {
+    // onClick(e) {
+    //   e.preventDefault();
+    //   P.getPokemonByName(this.pokemonName.toLowerCase()).then(response => {
+    //     this.pokemon = response,
+    //     this.valid_pokemon = true;
+    //     this.effects = [];
+    //   }).catch(() => {
+    //     this.valid_pokemon = false;
+    //   });
+
+    // },
+    SearchPokemon(e) {
+      P.getPokemonByName(e.toLowerCase()).then(response => {
         this.pokemon = response,
         this.valid_pokemon = true;
         this.effects = [];
       }).catch(() => {
         this.valid_pokemon = false;
       });
-
     }
   }
 }
