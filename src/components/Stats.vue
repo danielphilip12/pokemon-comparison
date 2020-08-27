@@ -18,6 +18,11 @@
                     </div>
                   </td>
               </tr>
+              <tr>
+                  <td>Total</td>
+                  <td id="totalStat">{{ statTotal }}</td>
+
+              </tr>
           </tbody>
       </table>
       
@@ -27,10 +32,21 @@
 <script>
 export default {
     name: "Stats",
-    props: ["stats"]
+    props: ["stats"],
+    computed: {
+        statTotal: function() {
+            let total = 0;
+            for(let i = 0; i < this.stats.length; i++) {
+                total += this.stats[i].base_stat
+            }
+            return total;
+        }
+    }
 }
 </script>
 
-<style>
-
+<style scoped>
+#totalStat {
+    font-weight: bold;
+}
 </style>
