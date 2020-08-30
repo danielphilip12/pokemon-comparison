@@ -7,11 +7,13 @@
       </datalist>
       <button class="btn btn-success" @click="onClick">Search Pokemon</button>
     </form> -->
+    
     <Search @search-pokemon="SearchPokemon" />
+    
     
     <div v-if="valid_pokemon">
       
-      <img :src="pokemon.sprites.front_default" alt=""><br>
+      <img :src="pokemon.sprites.front_default" alt="No Image Available"><br>
       <Basics :pokemon="pokemon" />
       <Stats :stats="pokemon.stats" />
       <Abilities :abilities="pokemon.abilities" :pokedex="Pokedex" :effects="effects" />
