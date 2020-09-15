@@ -1,5 +1,6 @@
 <template>
   <div>
+      <h1 class="h2 text-center">Types</h1>
       <table class="table">
           <thead>
               <tr>
@@ -85,5 +86,8 @@ export default {
 }
 .steel {
     background-color: #AAAABB;
+}
+.flying {
+    background-color: #8899FF;
 }
 </style>

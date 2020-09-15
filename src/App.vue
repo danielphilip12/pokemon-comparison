@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="jumbotron">
-      <h1>Pokemon Comparer</h1>
+      <h1 class="display-2">Pokemon Comparer</h1>
+      <p class="text-muted">Compare Pokemon up to Ultra Sun and Moon</p>
     </div>
     
     <div class="container">

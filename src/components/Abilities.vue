@@ -3,6 +3,7 @@
         <li v-for="(ability, index) in abilities" :key="index" class="list-group-item">{{ ability.ability.name }}</li>
     </ul> -->
     <div>
+        <h1 class="h2 text-center">Abilities</h1>
         <table class="table">
             <thead>
                 <tr>
