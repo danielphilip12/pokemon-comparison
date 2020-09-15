@@ -5,15 +5,17 @@
       <p class="text-muted">Compare Pokemon up to Ultra Sun and Moon</p>
     </div>
     
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-6">
+        <div class="col">
           <HelloWorld />
         </div>
-        <div class="vertical"></div>
-        <div class="col-6">
+        <!-- <div class="vertical"></div> -->
+        <div class="col">
           <HelloWorld />
         </div>
+        <!-- <div class="vertical"></div> -->
+        
       </div>
     </div>
     

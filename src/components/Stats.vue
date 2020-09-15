@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1 class="h2 text-center">Base Stats</h1>
+      <h1 class="h2 text-center center-block">Base Stats</h1>
       <table class="table">
           <thead>
               <tr>
